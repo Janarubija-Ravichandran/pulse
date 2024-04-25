@@ -1,0 +1,76 @@
+<div class="main">
+    <div class="container">
+        <div class="sub">
+            <form (ngSubmit)="onSubmit()">
+                <table cellspacing="20" class="fixed-header">
+                    <tr>
+                        <th>Aadhar Number:</th>
+                        <td><input type="text" id="aadhar" name="aadhar" [(ngModel)]="experience.Aadhar" disabled></td>
+                    </tr>
+                    <tr>
+                        <th>Company Name:</th>
+                        <td><input type="text" id="company" name="company" [(ngModel)]="experience.CompanyName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Designation:</th>
+                        <td><input type="text" id="designation" name="designation"
+                                [(ngModel)]="experience.DesignationDepartmentEmployeeNo"></td>
+                    </tr>
+                    <tr>
+                        <th>Office Address:</th>
+                        <td><input type="text" id="address" name="address" [(ngModel)]="experience.AddressTelephone"></td>
+                    </tr>
+                    <tr>
+                        <th>Details of Reporting Manager:</th>
+                        <td><input type="text" id="manager" name="manager"
+                                [(ngModel)]="experience.ReportingManagerDetails">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Employement Dates:</th>
+                        <td><input type="text" id="dates" name="dates" [(ngModel)]="experience.EmploymentDates"></td>
+                    </tr>
+                    <tr>
+                        <th>Annual CTC:</th>
+                        <td><input type="text" id="ctc" name="ctc" [(ngModel)]="experience.AnnualCTC"></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="nexbut">Add</button></td>
+                        <!-- <td></td> -->
+                      <td><button class="nexbut" (click)="success()" >Submit</button></td>
+
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- Display minimized form data -->
+        <div><br>
+          <h3 class="minimized-form">Submitted Experience Details</h3>
+            <table class="table1">
+              <thead class="head">
+                <tr>
+                  <th>Company Name</th>
+                  <th>designation</th>
+                  <th>Address</th>
+                  <th>Reporting Manager</th>
+                  <th>Employee Dates</th>
+                  <th>Annual CTC</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let experience of experienceList">
+                  <!-- <td>{{ experience.Aadhar }}</td> -->
+                  <td>{{ experience.CompanyName }}</td>
+                  <td>{{ experience.DesignationDepartmentEmployeeNo }}</td>
+                  <td>{{ experience.AddressTelephone }}</td>
+                  <td>{{ experience.ReportingManagerDetails }}</td>
+                  <td>{{ experience.EmploymentDates }}</td>
+                  <td>{{ experience.AnnualCTC }}</td>
+                  <!-- <td>{{ experience.Year_Passed }}</td> -->
+            </table>
+          </div>
+        <!-- </div> -->
+    </div>
+</div>

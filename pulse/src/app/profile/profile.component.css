@@ -1,0 +1,221 @@
+*{
+  padding:7px 7px 5px 0;
+  margin: auto;
+}
+ .main {
+   padding: 10px;
+   padding-left: 100px;
+   height: 120px;
+   width: 900px;
+
+
+ }
+
+ table {
+   background-color:#d9e7ed;
+   background-origin: padding-box;
+   border-radius: 20px;
+ }
+
+ .small-icon {
+   font-size: 14px;
+ }
+
+ .container {
+   width: 80%;
+   margin: 20px;
+   border: 1px solid white;
+   padding: 20px;
+ }
+
+ .profile-form {
+   width: 100%;
+   /* padding-left: px; */
+ }
+
+ input,
+ select {
+   width: 100%;
+   padding: 3px;
+   padding-left: 5px;
+   margin: 5px 0;
+   border: 1px solid white;
+   border-radius: 4px;
+ }
+ input:focus{
+  background-color: white;
+ }
+
+ /* Style for buttons */
+ .nexbut {
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+
+ /* Class to shift table 50px left */
+ .shift-left {
+   transform: translateX(-50px);
+ }
+
+ /* CSS class for toggling button styling */
+ button.toggle-button {
+   margin-bottom: 10px;
+   padding: 8px 12px;
+   background-color: #f0f0f0;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+
+ /* Style for the image container */
+ .image-container {
+   position: relative;
+   background-color: green;
+   /* Pink color */
+   border-radius: 50%;
+   padding: 0;
+   display: inline-block;
+   height: 50px;
+   width: 50px;
+
+ }
+.img{
+  position: relative;
+  right: 40px;
+  top: 60px;
+}
+ /* Style for the edit button */
+ .edit-button {
+   /* position: absolute;
+   bottom: 5px;
+   right: 5px;
+   background-color: rgb(248, 247, 247);
+ Blue color */
+  /*   color: #111111;
+   border: none;
+   padding: 25px 20px;
+   border-radius: 50%;
+   cursor: pointer; */
+ }
+
+ /* Style for the cancel button */
+ .cancel-button {
+   position: absolute;
+   bottom: 15px;
+   right: 5px;
+   background-color: #dc3545;
+   /* Red color */
+   color: #fff;
+   border: none;
+   padding: 5px 10px;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+
+ /* Style for the profile image */
+ .profile-image {
+
+   border-radius: 50%;
+   border: gray;
+   padding-top: 30px;
+
+
+ }
+
+ .pro_img {
+   position: relative;
+   top: -10px;
+   left: 740px;
+ }
+
+ .inputGroup {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   margin: auto;
+   max-width: 210px;
+   position: relative;
+ }
+
+ .inputGroup input {
+   font-size: 100%;
+   padding: 0.6em;
+   outline: none;
+   border: 2px solid white;
+   background-color: transparent;
+   border-radius: 10px;
+   width: 80%;
+ }
+
+ .inputGroup label {
+   font-size: 100%;
+   position: absolute;
+   left: 0;
+   padding: 1.0em;
+   margin-left: 0.5em;
+   pointer-events: none;
+   transition: all 0.3s ease;
+   color: rgb(100, 100, 100);
+ }
+
+ .inputGroup :is(input:focus, input:valid)~label {
+   transform: translateX(-10%) scale(1.0);
+   margin: -1.4em;
+   margin-left: 1.6em;
+   padding: 0.6em;
+   /* background-color: #e8e8e8; */
+ }
+
+ .inputGroup :is(input:focus, input:valid) {
+   border-color: rgb(150, 150, 200);
+ }
+
+ /* Button styling */
+ .save-button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 14px;
+   position: relative;
+   left: 410px;
+   /* Position relative for the animation */
+   overflow: hidden;
+   /* Hide the overflowing animation */
+ }
+
+ /* Icon styling */
+ .save-button i {
+   margin-right: 5px;
+   /* Adjust as needed for spacing between icon and text */
+ }
+
+ /* Animation */
+ .save-button::after {
+   content: '';
+   /* Empty content */
+   position: absolute;
+   width: 0;
+   height: 100%;
+   top: 0;
+   left: 50%;
+   background-color: rgba(255, 255, 255, 0.2);
+   /* Transparent white color for the animation */
+   transition: width 0.3s ease-out;
+   /* Animation transition */
+ }
+
+ /* Hover animation */
+ .save-button:hover::after {
+   width: 100%;
+   /* Expand the width on hover */
+   left: 0;
+   /* Move the animation to the left */
+ }

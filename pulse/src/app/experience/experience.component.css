@@ -1,0 +1,114 @@
+.main {
+  padding: 10px;
+  padding-left: 100px;
+  height: 220px;
+  width: 600px;
+}
+
+.container {
+  width: 800px;
+  margin: auto;
+  border: 1px solid white;
+  padding: 30px;
+}
+
+
+.sub {
+  width: 60%;
+}
+
+input,
+select {
+  width: 60%;
+  padding: 3px;
+  /* padding-left: 5px; */
+  margin: 5px 0;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.fixed-header {
+  background-color: #d9e7ed;
+  background-origin: padding-box;
+  border-radius: 20px;
+  position: relative;
+  left: 250px;
+}
+
+/* .tablee {
+  background-color: skyblue;
+  background-origin: padding-box;
+  border-radius: 20px;
+  width: 800px;
+  height: 400px;
+} */
+
+.nexbut {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-button {
+  margin-left: 10px;
+
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+  /* Position relative for the animation */
+  overflow: hidden;
+  /* Hide the overflowing animation */
+}
+
+/* Icon styling */
+.save-button i {
+  margin-right: 5px;
+  /* Adjust as needed for spacing between icon and text */
+}
+
+/* Animation */
+.save-button::after {
+  content: '';
+  /* Empty content */
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background-color: rgba(10, 36, 235, 0.2);
+  /* Transparent white color for the animation */
+  transition: width 0.3s ease-out;
+  /* Animation transition */
+}
+
+/* Hover animation */
+.save-button:hover::after {
+  width: 100%;
+  /* Expand the width on hover */
+  left: 0;
+  /* Move the animation to the left */
+}
+
+.minimized-form {
+  position: relative;
+  right: -70px;
+}
+
+.table1 {
+  position: relative;
+  left: 150px;
+  border: 1px solid black;
+}
+.head{
+  background-color: #d9e7ed;
+  position: relative;
+  /* left: 100px; */
+}

@@ -1,0 +1,249 @@
+<div class="main">
+  <div class="container">
+    <div class="sub">
+      <form (ngSubmit)="onSubmit()" class="profile-form" enctype="multipart/form-data">
+
+        <div class="input-section">
+          <table>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" required id="first_Name" name="first_Name" [(ngModel)]="newItem.First_Name">
+                  <label for="name">  <i class="fas fa-user small-icon"></i> First Name</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" required id="middle_Name" name="first_Name"
+                  [(ngModel)]="newItem.Middle_Name">
+                  <label for="name"><i class="fas fa-user small-icon"></i> Middle Name</label>
+
+                </div>
+
+              </td>
+              <td>
+                <div class="inputGroup">
+                 <input type="text" required id="last_Name" name="last_Name"
+                  [(ngModel)]="newItem.Last_Name">
+                  <label for="name"> <i class="fas fa-user small-icon"></i> Last Name</label>
+
+                </div>
+              </td>
+            </tr>
+          <tr>
+            <td>
+              <div class="inputGroup">
+                <input type="date" id="dob" name="dob" [(ngModel)]="newItem.DOB">
+                <label for="name"> <i class="fas fa-calendar-alt" style="font-size: 12px;"></i> Date Of Birth</label>
+              </div>
+            </td>
+            <td>
+              <div class="inputGroup">
+                <input type="number" required id="age" name="age" [(ngModel)]="newItem.Age">
+                <label for="name"><i class="fas fa-hourglass-half" style="font-size: 12px;"></i> Age</label>
+              </div>
+            </td>
+            <td rowspan="2">
+              <div class="image-container">
+                <img [src]="newItem.profile_image || imageUrl" class="profile-image">
+<button class="edit-button" (click)="fileInput.click()">
+  <i class="fas fa-edit"></i>
+</button>                <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" class="img">
+
+                <button class="cancel-button" *ngIf="newItem.profile_image" (click)="newItem.profile_image = ''">
+                  <i class="fas fa-times"></i> Cancel
+                </button>
+              </div>
+            </td>
+          </tr>   <!-- finish-->
+            <tr>
+              <td>
+                <div for="gender">Gender:</div>
+                <select name="gender" [(ngModel)]="newItem.Gender">
+                  <option value="Male"> Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+              <td>
+                <div for="marital_status">Marital Status:</div>
+                <select name="marital_status" [(ngModel)]="newItem.Marital_Status">
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Not Prefer To Say">Not Prefer To Say</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="number" name="phone" id="phone" required [(ngModel)]="newItem.Phone">
+                  <label for="name"> <i class="fas fa-phone" style="font-size: 12px;"></i> Phone</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="email" name="email" id="email" required [(ngModel)]="newItem.Email">
+                  <label for="name"><i class="fas fa-envelope" style="font-size: 14px;"></i> Email</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" required name="known_languages" id="known_languages" [(ngModel)]="newItem.Language_Known">
+                  <label for="name"> <i class="fas fa-globe" style="font-size: 14px;"></i> Language Known</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="blood_group" id="blood_group" required [(ngModel)]="newItem.Blood_Group">
+                  <label for="name"> <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Blood_Group</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="nationality" id="nationality" required [(ngModel)]="newItem.Nationality">
+                  <label for="name"> <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Nationality </label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="aadhar" id="aadhar" required [(ngModel)]="newItem.Aadhar">
+                  <label for="name"> <i class="far fa-id-card"></i>
+                    Aadhar no</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="pancard" id="pancard" required [(ngModel)]="newItem.PanCard">
+                  <label for="name"> <i class="far fa-id-card"></i> Pancard no</label>
+                </div>
+              </td>
+            <!-- </tr>
+            <tr> -->
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="passport" id="passport" required [(ngModel)]="newItem.Passport">
+                  <label for="name"> <i class="fas fa-book"></i>
+                    Passport_No</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td> <label for="current_location">Current Location:</label></td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_address1" id="current_address1" required [(ngModel)]="newItem.C_address1">
+                  <label for="name"><i class="fas fa-map-marker-alt"></i>
+                    Address 1</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_address2" id="current_address2" required [(ngModel)]="newItem.C_address2">
+                  <label for="name"><i class="fas fa-map-marker-alt"></i>
+                    Address 2</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_city" id="current_city" required [(ngModel)]="newItem.C_city">
+                  <label for="name"><i class="fas fa-city"></i>
+                    City</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_state" id="current_state" required [(ngModel)]="newItem.C_state">
+                  <label for="name"><i class="fas fa-map-marked-alt"></i>
+                    State</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_pincode" id="current_pincode" required [(ngModel)]="newItem.C_pincode">
+                  <label for="name"><i class="fas fa-thumbtack"></i>
+                    PinCode</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td> <label for="current_location">Permanent Location:</label></td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_address1" id="current_address1" required [(ngModel)]="newItem.P_address1">
+                  <label for="name"><i class="fas fa-map-marker-alt"></i>
+                    Address 1</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_address2" id="current_address2" required [(ngModel)]="newItem.P_address2">
+                  <label for="name"><i class="fas fa-map-marker-alt"></i>
+                    Address 2</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="current_city" id="current_city" required [(ngModel)]="newItem.P_city">
+                  <label for="name"><i class="fas fa-city"></i>
+                    City</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="permenent_state" id="current_state" required [(ngModel)]="newItem.P_state">
+                  <label for="name"><i class="fas fa-map-marked-alt"></i>
+                    State</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="permenent_pincode" id="current_pincode" required [(ngModel)]="newItem.P_pincode">
+                  <label for="name"><i class="fas fa-thumbtack"></i>
+                    PinCode</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="e_name" id="e_name" required [(ngModel)]="newItem.E_Name">
+                  <label for="name"><i class="fas fa-user"></i>
+                    Emergency Contact Name</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="e_relationship" id="e_relationship" required [(ngModel)]="newItem.E_Relationship">
+                  <label for="name"><i class="fas fa-male"></i>
+                    Emergency Relationship</label>
+                </div>
+              </td>
+              <td>
+                <div class="inputGroup">
+                  <input type="text" name="e_phone" id="e_phone" required [(ngModel)]="newItem.E_Phone">
+                  <label for="name"><i class="fas fa-mobile-alt"></i> Emergency Phone</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="display: flex;align-items: end;justify-content: end;">
+                <div>
+                  <button type="submit" class="save-button"><i class="fas fa-chevron-right"></i>Save</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

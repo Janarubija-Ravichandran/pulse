@@ -1,0 +1,72 @@
+.main {
+    width: 100%;
+    overflow: auto;
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.fixed-header {
+    table-layout: fixed;
+    width: auto;
+    /* Set a width to fit the content */
+}
+
+.fixed-header thead th:first-child {
+    position: sticky;
+    /* Make the first header cell sticky */
+    left: 0;
+    z-index: 1;
+    background-color: green;
+    /* Set background color for all headers */
+    color: white;
+    /* Optional: Set background color to match the table background */
+}
+
+.fixed-header tbody td:first-child {
+    position: sticky;
+    /* Make the first data cell sticky */
+    left: 0;
+    z-index: 1;
+    background-color: #f8f9fa;
+    /* Optional: Set background color to match the table background */
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.main::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+}
+
+.main::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+/*download button */
+.dowbut {
+    background-color: rgb(17, 145, 230);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.dowbut:hover {
+    background-color: darkblue;
+}
+
+.dowbut:active {
+    background-color: green;
+}
