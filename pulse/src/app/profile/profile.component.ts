@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AadharService } from '../aadhar.service';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { NgModule } from '@angular/core';
 
@@ -49,7 +50,6 @@ interface Item{
 })
 export class ProfileComponent implements OnInit {
 
-
   newItem: Item = {
     profile_image: '',
     First_Name: '',
@@ -87,17 +87,25 @@ export class ProfileComponent implements OnInit {
   imageUrl: string = 'path/to/default-image.jpg';
   // form!: FormGroup;
 
-  constructor(private router: Router,private http: HttpClient, private aadharService: AadharService) {}
+  userForm: FormGroup;
+  isFormSubmitted: boolean = false;
+
+  constructor(private router: Router,private http: HttpClient, private aadharService: AadharService) {
+    this.userForm =  new FormGroup({
+      firstName: new FormControl("",[Validators.required])
+    })
+  }
 
   ngOnInit(): void {}
 
-
   onSubmit(): void {
-    if (!this.selectedFile) {
-      console.error('No file selected');
-      return;
-    }
-
+    // if (!this.selectedFile) {
+    //   console.error('No file selected');
+    //   return;
+    // }
+    const isFormValid = this.userForm.valid;
+    debugger;
+    this.isFormSubmitted =  true;
 
 //     this.form = this.fb.group({
 //       name: ['', Validators.required],
@@ -108,7 +116,7 @@ export class ProfileComponent implements OnInit {
 
     // Creating a FormData object to submit data
     const formData = new FormData();
-    formData.append('profile_image', this.selectedFile);
+    // formData.append('profile_image', this.selectedFile);
 
     // Appending other form fields to FormData
     formData.append('Emp_Name', `${this.newItem.First_Name} ${this.newItem.Middle_Name} ${this.newItem.Last_Name}`.trim());
@@ -161,7 +169,6 @@ export class ProfileComponent implements OnInit {
       this.selectedFile = null;
       return;
     }
-
     this.previewImage(this.selectedFile);
   }
 
@@ -177,6 +184,19 @@ export class ProfileComponent implements OnInit {
     // Navigate to the dashboard component
     this.router.navigate(['/education']);
   }
+     // Custom function to validate the date of birth
+     validateDOB(dob: string): void {
+      const selectedDate = new Date(dob);
+      const today = new Date();
 
+      // Set today's date to midnight for comparison
+      today.setHours(0, 0, 0, 0);
 
+      // Check if the selected date is today or in the future
+      if (selectedDate >= today) {
+          alert('Invalid date of birth. It must be a past date.');
+          // Reset the DOB input to an empty string
+          this.newItem.DOB = '';
+      }
+  }
 }

@@ -232,3 +232,15 @@ left:-10px;
    left: 0;
    /* Move the animation to the left */
  }
+ .input-error {
+  border: 1px solid red;
+}
+
+/* Style for error message */
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}

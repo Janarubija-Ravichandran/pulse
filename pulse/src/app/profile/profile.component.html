@@ -10,40 +10,168 @@
             <tr>
               <td>
                 <div class="inputGroup">
+                    <input
+                        type="text"
+                        required
+                        id="first_Name"
+                        [(ngModel)]="newItem.First_Name"
+                        #firstName="ngModel"
+                        minlength="2"
+                        maxlength="20"
+                    />
+                    <label for="name">
+                        <i class="fas fa-user small-icon"></i> First Name
+                    </label>
+
+                    <!-- Display error messages inside the input box -->
+                    <span *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error-message">
+
+                    </span>
+                </div>
+            </td>
+
+              <!-- <td>
+                <div class="inputGroup">
                   <input type="text" required id="first_Name" [(ngModel)]="newItem.First_Name">
                   <label for="name"><i class="fas fa-user small-icon"></i> First Name</label>
 
                 </div>
-              </td>
-              <td>
+              </td> -->
+              <!-- <td>
                 <div class="inputGroup">
                   <input type="text" required id="middle_Name" name="first_Name"
                   [(ngModel)]="newItem.Middle_Name">
                   <label for="name"><i class="fas fa-user small-icon"></i> Middle Name</label>
                 </div>
-              </td>
+              </td> -->
               <td>
                 <div class="inputGroup">
-                 <input type="text" required id="last_Name" name="last_Name"
-                  [(ngModel)]="newItem.Last_Name">
-                  <label for="name"> <i class="fas fa-user small-icon"></i> Last Name</label>
+                    <input
+                        type="text"
+                        required
+                        id="middle_Name"
+                        name="middle_Name"
+                        [(ngModel)]="newItem.Middle_Name"
+                        #middleName="ngModel"
+                        minlength="2"
+                        maxlength="20"
+                        pattern="^.{2,20}$"
+                    />
+                    <label for="middle_Name">
+                        <i class="fas fa-user small-icon"></i> Middle Name
+                    </label>
 
+                    <!-- Display error messages -->
+                    <span *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)" class="error-message">
+                        <!-- Check if minlength error exists -->
+                        <div *ngIf="middleName.errors?.['minlength']">
+                            Invalid name (minimum 2 characters).
+                        </div>
+
+                        <!-- Check if maxlength error exists -->
+                        <div *ngIf="middleName.errors?.['maxlength']">
+                            Invalid name (maximum 20 characters).
+                        </div>
+
+                        <!-- Check if pattern error exists -->
+                        <div *ngIf="middleName.errors?.['pattern']">
+                            Invalid middle name.
+                        </div>
+                    </span>
                 </div>
-              </td>
+            </td>
+
+            <td>
+              <div class="inputGroup">
+                  <input
+                      type="text"
+                      required
+                      id="last_Name"
+                      name="last_Name"
+                      [(ngModel)]="newItem.Last_Name"
+                      #lastName="ngModel"
+                      minlength="2"
+                      maxlength="30"
+                      pattern="^.{2,30}$"
+                  />
+                  <label for="last_Name">
+                      <i class="fas fa-user small-icon"></i> Last Name
+                  </label>
+
+                  <!-- Display error messages -->
+                  <span *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error-message">
+                      <!-- Check if minlength error exists -->
+                      <div *ngIf="lastName.errors?.['minlength']">
+                          Invalid name (minimum 2 characters).
+                      </div>
+
+                      <!-- Check if maxlength error exists -->
+                      <div *ngIf="lastName.errors?.['maxlength']">
+                          Invalid name (maximum 30 characters).
+                      </div>
+
+                      <!-- Check if pattern error exists -->
+                      <div *ngIf="lastName.errors?.['pattern']">
+                          Invalid last name.
+                      </div>
+                  </span>
+              </div>
+          </td>
+
             </tr>
           <tr>
             <td>
               <div class="inputGroup">
-                <input type="date" id="dob" name="dob" [(ngModel)]="newItem.DOB">
-                <label for="name"> <i class="fas fa-calendar-alt" style="font-size: 12px;"></i> Date Of Birth</label>
+                  <input
+                      type="date"
+                      id="dob"
+                      name="dob"
+                      [(ngModel)]="newItem.DOB"
+                      #dob="ngModel"
+                      (ngModelChange)="validateDOB(newItem.DOB)"
+                  />
+                  <label for="name">
+                      <i class="fas fa-calendar-alt" style="font-size: 12px;"></i> Date Of Birth
+                  </label>
+
+                  <!-- Display error message -->
+                  <span *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="error-message">
+                      Invalid date of birth (must be a past date).
+                  </span>
               </div>
-            </td>
-            <td>
-              <div class="inputGroup">
-                <input type="number" required id="age" name="age" [(ngModel)]="newItem.Age">
-                <label for="name"><i class="fas fa-hourglass-half" style="font-size: 12px;"></i> Age</label>
-              </div>
-            </td>
+          </td>
+
+          <td>
+            <div class="inputGroup">
+                <input
+                    type="number"
+                    required
+                    id="age"
+                    name="age"
+                    [(ngModel)]="newItem.Age"
+                    #age="ngModel"
+                    min="1"
+                    max="99"
+                />
+                <label for="name">
+                    <i class="fas fa-hourglass-half" style="font-size: 12px;"></i> Age
+                </label>
+
+                <!-- Display error messages -->
+                <span *ngIf="age.invalid && (age.dirty || age.touched)" class="error-message">
+                    <!-- Check if min error exists -->
+                    <div *ngIf="age.errors?.['min']">
+                        Invalid age (minimum 1).
+                    </div>
+
+                    <!-- Check if max error exists -->
+                    <div *ngIf="age.errors?.['max']">
+                        Invalid age (maximum 99).
+                    </div>
+                </span>
+            </div>
+        </td>
+
             <td rowspan="2">
               <div class="image-container" ><i class="fa fa-user-circle" style="font-size: 100px;"></i>
                 <img [src]="newItem.profile_image || imageUrl" alt=" " class="profile-image">
@@ -81,16 +209,54 @@
             <tr>
               <td>
                 <div class="inputGroup">
-                  <input type="number" name="phone" id="phone" required [(ngModel)]="newItem.Phone">
-                  <label for="name"> <i class="fas fa-phone" style="font-size: 12px;"></i> Phone</label>
+                    <input
+                        type="number"
+                        required
+                        id="phone"
+                        name="phone"
+                        [(ngModel)]="newItem.Phone"
+                        #phone="ngModel"
+                        min="1000000000"
+                        max="9999999999"
+                    />
+                    <label for="name">
+                        <i class="fas fa-phone" style="font-size: 12px;"></i> Phone
+                    </label>
+
+                    <!-- Display error messages -->
+                    <span *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="error-message">
+                        <!-- Check if the phone number is invalid -->
+                        <div *ngIf="phone.errors?.['min'] || phone.errors?.['max']">
+                            Phone number must be a 10-digit number.
+                        </div>
+                    </span>
                 </div>
-              </td>
-              <td>
-                <div class="inputGroup">
-                  <input type="email" name="email" id="email" required [(ngModel)]="newItem.Email">
-                  <label for="name"><i class="fas fa-envelope" style="font-size: 14px;"></i> Email</label>
-                </div>
-              </td>
+            </td>
+
+            <td>
+              <div class="inputGroup">
+                  <input
+                      type="email"
+                      required
+                      id="email"
+                      name="email"
+                      [(ngModel)]="newItem.Email"
+                      #email="ngModel"
+                  />
+                  <label for="email">
+                      <i class="fas fa-envelope" style="font-size: 14px;"></i> Email
+                  </label>
+
+                  <!-- Display error messages -->
+                  <span *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                      <!-- Check if the email is invalid -->
+                      <div *ngIf="email.errors?.['email']">
+                          Invalid email format (e.g., example@domain.com).
+                      </div>
+                  </span>
+              </div>
+          </td>
+
             </tr>
             <tr>
               <td>
@@ -101,57 +267,211 @@
               </td>
               <td>
                 <div class="inputGroup">
-                  <input type="text" name="blood_group" id="blood_group" required [(ngModel)]="newItem.Blood_Group">
-                  <label for="name"> <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Blood_Group</label>
+                    <input
+                        type="text"
+                        name="blood_group"
+                        id="blood_group"
+                        required
+                        [(ngModel)]="newItem.Blood_Group"
+                        #bloodGroup="ngModel"
+                        pattern="^(A|B|AB|O)([+-])$"
+                    />
+                    <label for="name">
+                        <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Blood Group
+                    </label>
+
+                    <!-- Display error messages -->
+                    <span *ngIf="bloodGroup.invalid && (bloodGroup.dirty || bloodGroup.touched)" class="error-message">
+                        <!-- Check if the blood group is invalid -->
+                        <div *ngIf="bloodGroup.errors?.['pattern']">
+                            Invalid blood group. Must be one of: A+, A-, B+, B-, AB+, AB-, O+, O-.
+                        </div>
+                    </span>
                 </div>
-              </td>
-              <td>
-                <div class="inputGroup">
-                  <input type="text" name="nationality" id="nationality" required [(ngModel)]="newItem.Nationality">
-                  <label for="name"> <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Nationality </label>
-                </div>
-              </td>
+            </td>
+
+            <td>
+              <div class="inputGroup">
+                  <input
+                      type="text"
+                      name="nationality"
+                      id="nationality"
+                      required
+                      [(ngModel)]="newItem.Nationality"
+                      #nationality="ngModel"
+                      maxlength="15"
+                      pattern="^[A-Z,a-z]*$"
+                  />
+                  <label for="nationality">
+                      <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Nationality
+                  </label>
+
+                  <!-- Display error messages -->
+                  <span *ngIf="nationality.invalid && (nationality.dirty || nationality.touched)" class="error-message">
+                      <!-- Check if pattern error exists -->
+                      <div *ngIf="nationality.errors?.['pattern']">
+                          Invalid nationality. Only capital letters are allowed.
+                      </div>
+
+                      <!-- Check if maxlength error exists -->
+                      <div *ngIf="nationality.errors?.['maxlength']">
+                          Nationality must be no more than 15 characters long.
+                      </div>
+                  </span>
+              </div>
+          </td>
+
             </tr>
             <tr>
               <td>
                 <div class="inputGroup">
-                  <input type="text" name="aadhar" id="aadhar" required [(ngModel)]="newItem.Aadhar">
-                  <label for="name"> <i class="far fa-id-card"></i>
-                    Aadhar no</label>
+                    <input
+                        type="text"
+                        required
+                        id="aadhar"
+                        name="aadhar"
+                        [(ngModel)]="newItem.Aadhar"
+                        #aadhar="ngModel"
+                        minlength="12"
+                        maxlength="12"
+                        pattern="^\d{12}$"
+                    />
+                    <label for="aadhar">
+                        <i class="far fa-id-card"></i> Aadhaar No
+                    </label>
+
+                    <!-- Display error messages -->
+                    <span *ngIf="aadhar.invalid && (aadhar.dirty || aadhar.touched)" class="error-message">
+                        <!-- Check if minlength error exists -->
+                        <div *ngIf="aadhar.errors?.['minlength']">
+                            Aadhaar number must contain 12 digits.
+                        </div>
+
+                        <!-- Check if maxlength error exists -->
+                        <div *ngIf="aadhar.errors?.['maxlength']">
+                            Aadhaar number must contain 12 digits.
+                        </div>
+
+                        <!-- Check if pattern error exists -->
+                        <div *ngIf="aadhar.errors?.['pattern']">
+                            Invalid Aadhaar number. It must contain exactly 12 numeric digits.
+                        </div>
+                    </span>
                 </div>
-              </td>
-              <td>
-                <div class="inputGroup">
-                  <input type="text" name="pancard" id="pancard" required [(ngModel)]="newItem.PanCard">
-                  <label for="name"> <i class="far fa-id-card"></i> Pancard no</label>
-                </div>
-              </td>
+            </td>
+
+            <td>
+              <div class="inputGroup">
+                  <input
+                      type="text"
+                      name="pancard"
+                      id="pancard"
+                      required
+                      [(ngModel)]="newItem.PanCard"
+                      #panCard="ngModel"
+                      minlength="10"
+                      maxlength="10"
+                      pattern="^[A-Z]{5}\d{4}[A-Z]$"
+                  />
+                  <label for="pancard">
+                      <i class="far fa-id-card"></i> PAN Card No
+                  </label>
+
+                  <!-- Display error messages -->
+                  <span *ngIf="panCard.invalid && (panCard.dirty || panCard.touched)" class="error-message">
+                      <!-- Check if pattern error exists -->
+                      <div *ngIf="panCard.errors?.['pattern']">
+                          Invalid PAN card number. Must be 10 characters (e.g., AAAA1234A).
+                      </div>
+                  </span>
+              </div>
+          </td>
+
             <!-- </tr>
             <tr> -->
               <td>
                 <div class="inputGroup">
-                  <input type="text" name="passport" id="passport" required [(ngModel)]="newItem.Passport">
-                  <label for="name"> <i class="fas fa-book"></i>
-                    Passport_No</label>
+                    <input
+                        type="text"
+                        name="passport"
+                        id="passport"
+                        required
+                        [(ngModel)]="newItem.Passport"
+                        #passport="ngModel"
+                        pattern="^[A-Z0-9]{6,9}$"
+                    />
+                    <label for="passport">
+                        <i class="fas fa-book"></i> Passport No
+                    </label>
+
+                    <!-- Display error messages -->
+                    <span *ngIf="passport.invalid && (passport.dirty || passport.touched)" class="error-message">
+                        <!-- Check if pattern error exists -->
+                        <div *ngIf="passport.errors?.['pattern']">
+                            Invalid passport number. Must be 6 to 9 alphanumeric characters.
+                        </div>
+                    </span>
                 </div>
-              </td>
+            </td>
+
             </tr>
             <tr>
-              <td> <label for="current_location">Current Location:</label></td>
+              <td> <label for="current_location" style="font-weight: 900px"><strong>Current Location:</strong></label></td>
               <td>
                 <div class="inputGroup">
-                  <input type="text" name="current_address1" id="current_address1" required [(ngModel)]="newItem.C_address1">
-                  <label for="name"><i class="fas fa-map-marker-alt"></i>
-                    Address 1</label>
-                </div>
-              </td>
+                  <input
+                      type="text"
+                      name="current_address1"
+                      id="current_address1"
+                      required
+                      [(ngModel)]="newItem.C_address1"
+                      #currentAddress1="ngModel"
+                      pattern="^[\d/\s]{1,20}$"
+                      maxlength="20"
+                  />
+                  <label for="current_address1">
+                      <i class="fas fa-map-marker-alt"></i> Address 1
+                  </label>
+
+                  <!-- Display error messages -->
+                  <span *ngIf="currentAddress1.invalid && (currentAddress1.dirty || currentAddress1.touched)" class="error-message">
+                      <!-- Check if pattern error exists -->
+                      <div *ngIf="currentAddress1.errors?.['pattern']">
+                          Invalid address. Must contain only numbers and/or forward slashes.
+                      </div>
+
+                      <!-- Check if maxlength error exists -->
+                      <div *ngIf="currentAddress1.errors?.['maxlength']">
+                          Invalid address. Must be no more than 20 characters long.
+                      </div>
+                  </span>
+              </div>
+
               <td>
                 <div class="inputGroup">
-                  <input type="text" name="current_address2" id="current_address2" required [(ngModel)]="newItem.C_address2">
-                  <label for="name"><i class="fas fa-map-marker-alt"></i>
-                    Address 2</label>
+                    <input
+                        type="text"
+                        name="current_address2"
+                        id="current_address2"
+                        required
+                        [(ngModel)]="newItem.C_address2"
+                        #currentAddress2="ngModel"
+                        maxlength="20"
+                    />
+                    <label for="current_address2">
+                        <i class="fas fa-map-marker-alt"></i> Address 2
+                    </label>
+
+                    <!-- Display error messages -->
+                    <span *ngIf="currentAddress2.invalid && (currentAddress2.dirty || currentAddress2.touched)" class="error-message">
+                        <!-- Check if maxlength error exists -->
+                        <div *ngIf="currentAddress2.errors?.['maxlength']">
+                            Invalid address. Must be no more than 20 characters long.
+                        </div>
+                    </span>
                 </div>
-              </td>
+            </td>
+
             </tr>
             <tr>
               <td>
@@ -177,7 +497,7 @@
               </td>
             </tr>
             <tr>
-              <td> <label for="current_location">Permanent Location:</label></td>
+              <td> <label for="current_location"><strong>Permanent Location:</strong></label></td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_address1" id="current_address1" required [(ngModel)]="newItem.P_address1">
