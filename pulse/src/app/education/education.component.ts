@@ -235,4 +235,8 @@ export class EducationComponent implements OnInit {
             Year_Passed: '',
         };
     }
+     pro() {
+    // Navigate to the dashboard component
+    this.router.navigate(['/profile']);
+  }
 }

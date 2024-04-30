@@ -154,5 +154,8 @@ export class ExperienceComponent implements OnInit {
     success(){
       alert('Successfully Submitted');
     }
-
+  edu() {
+    // Navigate to the dashboard component
+    this.router.navigate(['/education']);
+  }
 }

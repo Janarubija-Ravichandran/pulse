@@ -82,4 +82,14 @@ export class EditComponent implements OnInit {
       console.error('No item selected for update');
     }
   }
+
+  navigateToExperience(): void {
+    if (this.selectedItem && this.selectedItem.Aadhar) {
+      // Navigate to the editeducation form and pass the Aadhar number as a query parameter
+      this.router.navigate(['/editeducation'], {
+        queryParams: { aadhar: this.selectedItem.Aadhar },
+      });
+    }
+  }
+
 }

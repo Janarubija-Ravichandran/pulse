@@ -25,6 +25,7 @@ export class EditeducationComponent implements OnInit {
 
   selectedItem: Item | undefined;
   Aadhar: string | undefined;
+  // aadharNumber: string | undefined;
   Qualification: string | undefined;
 
   editexp() {
@@ -40,7 +41,14 @@ export class EditeducationComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+     // Retrieve the Aadhar number from query parameters
+     this.route.queryParams.subscribe((params) => {
+      this.Aadhar = params['aadhar'];
+      console.log('Aadhar number received:', this.Aadhar);
+      // Now you can use the Aadhar number in the editeducation form
+    });
   }
+
   getItemById(): void {
     if (this.Aadhar && this.Qualification) {
         this.http.get<Item>(`http://localhost:8090/api/education/${this.Aadhar}/${this.Qualification}`)
@@ -56,7 +64,7 @@ export class EditeducationComponent implements OnInit {
             });
     } else {
         console.error('Aadhar and Qualification must be provided');
-                alert('hii')
+        alert('hii')
 
     }
 }
@@ -71,7 +79,7 @@ updateItem(): void {
                 next: (updatedItem) => {
                     alert('Successfully updated');
                     console.log('Item updated successfully:', updatedItem);
-                },
+                  },
                 error: (error) => {
                     console.log('Error updating item:', error);
                     alert('Error updating item. Please try again.');
@@ -81,6 +89,15 @@ updateItem(): void {
         console.error('Aadhar or Qualification is undefined');
         alert('Aadhar or Qualification is undefined. Please provide valid inputs.');
     }
+}
+
+navigateToEducation(): void {
+  if (this.selectedItem && this.selectedItem.Aadhar) {
+    // Navigate to the editeducation form and pass the Aadhar number as a query parameter
+    this.router.navigate(['/editexperience'], {
+      queryParams: { aadhar: this.selectedItem.Aadhar },
+    });
+  }
 }
 
 

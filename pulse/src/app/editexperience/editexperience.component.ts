@@ -36,6 +36,12 @@ export class EditexperienceComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    // Retrieve the Aadhar number from query parameters
+    this.route.queryParams.subscribe((params) => {
+      this.Aadhar = params['aadhar'];
+      console.log('Aadhar number received:', this.Aadhar);
+      // Now you can use the Aadhar number in the editeducation form
+    });
   }
 
   getItemById(): void {

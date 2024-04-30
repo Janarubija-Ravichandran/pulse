@@ -2,9 +2,9 @@
     <div class="container">
         <div class="sub">
             <div>
-                <div class="butt">
-                    <button (click)="downloadAllCSV()" class="dowbutcsv">Download All</button>
-                    <button (click)="downloadAllPDF()" class="dowbutpdf" [class.blur-effect]="!employee_data.length">Download All Records PDF</button>
+                <div class="butt" style="padding-left: 700px;">
+                    <button (click)="downloadAllCSV()" class="dowbutcsv"><i class="fa-solid fa-file-csv"></i><i class="fa-solid fa-download"></i></button>
+                    <button (click)="downloadAllPDF()" class="dowbutpdf" [class.blur-effect]="!employee_data.length"><i class="fa-solid fa-file-pdf"></i><i class="fa-solid fa-download"></i></button>
                     <!-- <input type="button" class="button" value="adminexperience" (click)="adminexp()"> -->
                     <input type="button" class="dowbut" value="Admin" (click)="admin()">
                     <input type="button" class="dowbut" id="adminedu" value="Experience" (click)="adminexp()">
@@ -15,11 +15,11 @@
                             <th>Aadhar</th>
                             <th>Qualification</th>
                             <th>Discipline</th>
-                            <th>School_College_Institute</th>
-                            <th>Affiliated_Board_University</th>
-                            <th>Marks_CGPA</th>
-                            <th>Year_Enrollment</th>
-                            <th>Year_Passed</th>
+                            <th>School College Institute</th>
+                            <th>Affiliate Board University</th>
+                            <th>Marks CGPA</th>
+                            <th>Year Enrollment</th>
+                            <th>Year Passed</th>
                             <th>Download</th>
                         </tr>
                     </thead>
@@ -34,8 +34,8 @@
                             <td>{{ item.Year_Enrollment }}</td>
                             <td>{{ item.Year_Passed }}</td>
                             <td>
-                                <button (click)="downloadCSV(item.Aadhar)"
-                                    [class.blur-effect]="item.isDeactivated">Download CSV</button>
+                                <button (click)="downloadCSV(item.Aadhar)"><i class="fa fa-download"></i>
+</button>
                             </td>
                             <!-- Button for downloading CSV -->
                             <!-- <td>

@@ -1,12 +1,12 @@
 .main {
   padding: 10px;
-  padding-left: 300px;
+  padding-left: 200px;
   height: 120px;
   width: 900px;
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   margin: auto;
   border: 1px solid white;
   padding: 20px;
@@ -27,9 +27,10 @@ select {
 }
 
 .fixed-header {
-  background-color: #d9e7ed;
+  background-color: #f0f4f5e8;
   background-origin: padding-box;
   border-radius: 20px;
+  width:700px;
 }
 
 .nexbut {
@@ -92,7 +93,7 @@ select {
 }
 .table1{
   position: relative;
-  right: 180px;
+  right: 100px;
   border: 1px solid black;
 }
 

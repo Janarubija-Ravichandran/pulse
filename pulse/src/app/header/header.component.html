@@ -1,5 +1,5 @@
 <div>
-    <mat-toolbar class="mat-elevation-z8">
+    <mat-toolbar class="mat-elevation-z8" style="background-color: orange; height:120px;">
         <button (click)="drawer.toggle()" mat-icon-button>
             <mat-icon>menu</mat-icon>
             <span class="logo">
@@ -17,17 +17,17 @@
 
     </mat-toolbar>
 </div>
-<mat-drawer-container autosize class="sidenav">
-    <mat-drawer #drawer opened="true" mode="side" position="start">
+<mat-drawer-container autosize class="sidenav" >
+    <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color: rgba(3, 58, 126, 0.966);">
         <mat-nav-list>
             <mat-list-item>
-                <button  routerLink="/profile" mat-button><mat-icon>perm_identity</mat-icon> TECH-PROFILE</button>
+                <button  routerLink="/profile" mat-button style="color:white;"><mat-icon>perm_identity</mat-icon> TECH-PROFILE</button>
             </mat-list-item>
             <mat-list-item>
-                <button routerLink="/education" mat-button><mat-icon>school</mat-icon>ACADEMIC</button>
+                <button routerLink="/education" mat-button  style="color:white;"><mat-icon>school</mat-icon>ACADEMIC</button>
             </mat-list-item>
             <mat-list-item>
-                <button routerLink="/experience" mat-button><mat-icon>work</mat-icon> EXPERIENCE</button>
+                <button routerLink="/experience" mat-button  style="color:white;"><mat-icon>work</mat-icon> EXPERIENCE</button>
             </mat-list-item>
             <!-- <mat-list-item>
                 <button routerLink="/academic" mat-button><mat-icon>bookmark</mat-icon> SKILLS</button>
@@ -43,8 +43,8 @@
         </mat-list-item> -->
         </mat-nav-list>
     </mat-drawer>
-    <mat-drawer-content>
-        <div style="text-align: center;min-height: 890px;width:1220px;">
+    <mat-drawer-content style="background-color: ivory;">
+        <div style="text-align: center;min-height: 860px;width:1220px; background-color: ivory;">
             <router-outlet></router-outlet>
 
         </div>

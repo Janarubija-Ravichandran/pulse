@@ -15,7 +15,7 @@ interface Item {
   First_Name: '',
   Middle_Name: '',
   Last_Name: '',
-  Age: 0,
+  Age: '',
   DOB: '',
   Gender: '',
   Marital_Status: '',

@@ -67,9 +67,13 @@
     <div class="sub">
       <form (ngSubmit)="onSubmit()">
         <table cellspacing="20" class="fixed-header">
-          <tr>
+            <tr>
             <th><label for="aadhar">Aadhar:</label></th>
             <td><input type="text" id="aadhar" name="aadhar" [(ngModel)]="education.Aadhar" disabled></td>
+            <td style="display: flex;align-items: end;justify-content: end;">
+              <button type="submit" id="save" class="save-button"><i class="fa fa-plus"></i>
+              </button>
+            </td>
           </tr>
           <tr>
             <th><label for="qualification">Qualification:</label></th>
@@ -110,11 +114,22 @@
             <th><label for="yearPassed">Year Passed:</label></th>
             <td><input type="text" id="yearPassed" name="yearPassed" [(ngModel)]="education.Year_Passed"></td>
           </tr>
-          <tr>
-            <td><button type="submit" id="save" class="nexbut">Add</button></td>
-            <!-- <td><button type="submit" class="nextbut">Next</button></td> -->
-            <td><input type="button" style="width: 100px;" class="nexbut" value="Next" (click)="exp()"></td>
-          </tr>
+
+                    <tr>
+                      <td>
+                        <button type="submit" class="save-button" (click)="pro()"><i class="fas fa-chevron-left"></i></button>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td style="display: flex;align-items: end;justify-content: end;">
+                        <div>
+                          <button type="submit" class="save-button" (click)="exp()"><i class="fas fa-chevron-right"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
         </table>
       </form>
     </div>
@@ -124,7 +139,7 @@
       <h3 class="minimized-form">Submitted Education Details</h3>
       <!-- <div *ngFor="let education of educationList"> -->
         <table class="table1" style="align-items: center;">
-          <thead class="head">
+          <thead class="head" >
             <tr>
               <!-- <th>Aadhar</th> -->
               <th>Qualification</th>

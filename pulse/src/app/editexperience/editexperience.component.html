@@ -2,7 +2,8 @@
     <div class="top">
         <div class="inp">
             <!-- <div class="search"> -->
-            <input type="number" name="text" placeholder="" class="input" [(ngModel)]="Aadhar">
+            <!-- <input type="number" name="text" placeholder="" class="input" [(ngModel)]="Aadhar"> -->
+            <input type="text" name="aadhar" placeholder="Aadhar" [value]="Aadhar" class="input" disabled />
             <input type="text" name="text" placeholder="" class="input" [(ngModel)]="CompanyName" >
             <span class="showbutt">
                 <button (click)="getItemById()" class="nexbut1">Show</button>

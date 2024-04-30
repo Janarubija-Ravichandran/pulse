@@ -2,7 +2,9 @@
     <div class="top">
         <div class="inp">
             <!-- <div class="search"> -->
-            <input type="number" name="text" placeholder="" class="input" [(ngModel)]="Aadhar">
+            <!-- <input type="number" name="text" placeholder="" class="input" [(ngModel)]="Aadhar"> -->
+            <input type="text" name="aadhar" placeholder="Aadhar" [value]="Aadhar" class="input" disabled />
+
                         <!-- <input type="text" name="text" placeholder="" class="input" [(ngModel)]="Qualification"> -->
                   <select id="qualification" name="qualification" [(ngModel)]="Qualification">
                             <option selected disabled>--select--</option>
@@ -71,7 +73,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><button type="submit" class="show" class="nexbut">Update</button></td>
+                        <td><button type="submit" class="show" class="button">Update</button></td>
+                        <td><button (click)="navigateToEducation()" class="nextButton">Next</button>
                     </tr>
                 </table>
             </form>
