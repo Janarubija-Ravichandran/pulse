@@ -1,7 +1,7 @@
-*{
+/* *{
   padding:7px 7px 5px 0;
   margin: auto;
-}
+} */
  .main {
    padding-top: -30px;
    padding-left: 104px;
@@ -175,10 +175,11 @@ left:-10px;
 
  .inputGroup :is(input:focus, input:valid)~label {
    transform: translateX(-10%) scale(1.0);
-   margin: -1.9em;
-   margin-left: 1.6em;
+   margin: -1.2em;
+   margin-left: 2.2em;
    padding: 0.4em;
-   /* background-color: #e8e8e8; */
+   background-color: #f0f4f5e8;
+   height: 10px;
  }
 
  .inputGroup :is(input:focus, input:valid) {
@@ -238,9 +239,11 @@ left:-10px;
 
 /* Style for error message */
 .error-message {
+  width: 270px;
+  height: 10px;
   color: red;
-  font-size: 0.8rem;
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  left:-60px;
+  top:15px;
+
 }
