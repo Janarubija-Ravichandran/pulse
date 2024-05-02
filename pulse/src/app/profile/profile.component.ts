@@ -194,7 +194,7 @@ export class ProfileComponent implements OnInit {
 
       // Check if the selected date is today or in the future
       if (selectedDate >= today) {
-          alert('Invalid date of birth. It must be a past date.');
+          // alert('Invalid date of birth. It must be a past date.');
           // Reset the DOB input to an empty string
           this.newItem.DOB = '';
       }

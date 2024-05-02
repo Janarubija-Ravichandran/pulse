@@ -6,28 +6,49 @@
         <!-- <form (ngSubmit)="onSubmit()" [formGroup]="form" class="profile-form" enctype="multipart/form-data"> -->
 
         <div>
-          <table class="input-section">
+          <table class="input-section" style="padding-top:30px;">
             <tr>
               <td>
                 <div class="inputGroup">
-                    <input
-                        type="text"
-                        required
-                        id="first_Name"
-                        [(ngModel)]="newItem.First_Name"
-                        #firstName="ngModel"
-                        minlength="2"
-                        maxlength="20"
-                    />
-                    <label for="name">
-                        <i class="fas fa-user small-icon"></i> First Name
+                  <input
+    type="text"
+    required
+    id="first_Name"
+    name="first_Name"
+    [(ngModel)]="newItem.First_Name"
+    #firstName="ngModel"
+    minlength="2"
+    maxlength="20"
+    pattern="^[A-Za-z]+$"
+    title="First name can only contain alphabetic characters."
+/>
+
+
+                    <label for="first_Name">
+                        <i class="fas fa-user small-icon" style="font-size: 12px;"></i>
+                         First Name
                     </label>
-
-                    <!-- Display error messages inside the input box -->
+                    <span *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                    class="error-message">
+                      <div *ngIf="firstName.errors?.['minlength']">
+                      *
+                     </div>
+                     <div *ngIf="firstName.errors?.['maxlength']">
+                      !
+                    </div>
                     <span *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error-message">
+                      <!-- Check if pattern error exists -->
+                      <span *ngIf="firstName.errors?.['pattern']" style="font-size: 12px;">
+                      only alphabetic characters allowed.
+                      </span>
+                  </span>
 
-                    </span>
-                </div>
+                      <!-- <div *ngIf="firstName.errors?.['pattern']">
+                      *
+                      </div> -->
+                  </span>
+
+             </div>
             </td>
 
               <!-- <td>
@@ -48,7 +69,6 @@
                 <div class="inputGroup">
                     <input
                         type="text"
-                        required
                         id="middle_Name"
                         name="middle_Name"
                         [(ngModel)]="newItem.Middle_Name"
@@ -58,24 +78,18 @@
                         pattern="^.{2,20}$"
                     />
                     <label for="middle_Name">
-                        <i class="fas fa-user small-icon"></i> Middle Name
+                        <i class="fas fa-user small-icon" style="font-size: 12px;"></i> Middle Name
                     </label>
 
-                    <!-- Display error messages -->
                     <span *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)" class="error-message">
-                        <!-- Check if minlength error exists -->
                         <div *ngIf="middleName.errors?.['minlength']">
-                            Invalid name (minimum 2 characters).
+                          *
+                        </div>
+                       <div *ngIf="middleName.errors?.['maxlength']">
+                        !
                         </div>
 
-                        <!-- Check if maxlength error exists -->
-                        <div *ngIf="middleName.errors?.['maxlength']">
-                            Invalid name (maximum 20 characters).
-                        </div>
-
-                        <!-- Check if pattern error exists -->
                         <div *ngIf="middleName.errors?.['pattern']">
-                            Invalid middle name.
                         </div>
                     </span>
                 </div>
@@ -95,25 +109,25 @@
                       pattern="^.{2,30}$"
                   />
                   <label for="last_Name">
-                      <i class="fas fa-user small-icon"></i> Last Name
+                      <i class="fas fa-user small-icon" style="font-size: 12px;"></i> Last Name
                   </label>
 
                   <!-- Display error messages -->
                   <span *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error-message">
                       <!-- Check if minlength error exists -->
                       <div *ngIf="lastName.errors?.['minlength']">
-                          Invalid name (minimum 2 characters).
+                        *
                       </div>
 
                       <!-- Check if maxlength error exists -->
                       <div *ngIf="lastName.errors?.['maxlength']">
-                          Invalid name (maximum 30 characters).
-                      </div>
+                      !
+                          </div>
 
                       <!-- Check if pattern error exists -->
-                      <div *ngIf="lastName.errors?.['pattern']">
-                          Invalid last name.
-                      </div>
+                      <span *ngIf="lastName.errors?.['pattern']">
+
+                      </span>
                   </span>
               </div>
           </td>
@@ -161,12 +175,12 @@
                 <span *ngIf="age.invalid && (age.dirty || age.touched)" class="error-message">
                     <!-- Check if min error exists -->
                     <div *ngIf="age.errors?.['min']">
-                        Invalid age (minimum 1).
+                        Invalid
                     </div>
 
                     <!-- Check if max error exists -->
                     <div *ngIf="age.errors?.['max']">
-                        Invalid age (maximum 99).
+                        Invalid
                     </div>
                 </span>
             </div>
@@ -194,7 +208,7 @@
                 <select name="gender" [(ngModel)]="newItem.Gender" style="width: 200px; background-color: transparent;border: 1px solid rgb(23, 0, 124);">
                   <option value="Male"> Male</option>
                   <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                  <option value="Other">Rather Not Say</option>
                 </select>
               </td>
               <td>
@@ -202,7 +216,7 @@
                 <select name="marital_status" [(ngModel)]="newItem.Marital_Status" style="width: 200px; background-color: transparent;border: 1px solid rgb(23, 0, 124);">
                   <option value="Single">Single</option>
                   <option value="Married">Married</option>
-                  <option value="Not Prefer To Say">Not Prefer To Say</option>
+                  <option value="Not Prefer To Say">Rather Not Say</option>
                 </select>
               </td>
             </tr>
@@ -244,7 +258,7 @@
                       #email="ngModel"
                   />
                   <label for="email">
-                      <i class="fas fa-envelope" style="font-size: 14px;"></i> Email
+                      <i class="fas fa-envelope" style="font-size: 12px;"></i> Email
                   </label>
 
                   <!-- Display error messages -->
@@ -262,7 +276,7 @@
               <td>
                 <div class="inputGroup">
                   <input type="text" required name="known_languages" id="known_languages" [(ngModel)]="newItem.Language_Known">
-                  <label for="name"> <i class="fas fa-globe" style="font-size: 14px;"></i> Language Known</label>
+                  <label for="name"> <i class="fas fa-globe" style="font-size: 12px;"></i> Language Known</label>
                 </div>
               </td>
               <td>
@@ -277,7 +291,7 @@
                         pattern="^(A|B|AB|O)([+-])$"
                     />
                     <label for="name">
-                        <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Blood Group
+                        <i class="fas fa-heartbeat" style="font-size: 12px;"></i> Blood Group
                     </label>
 
                     <!-- Display error messages -->
@@ -303,7 +317,7 @@
                       pattern="^[A-Z,a-z]*$"
                   />
                   <label for="nationality">
-                      <i class="fas fa-heartbeat" style="font-size: 14px;"></i> Nationality
+                      <i class="fas fa-heartbeat" style="font-size: 12px;"></i> Nationality
                   </label>
 
                   <!-- Display error messages -->
@@ -337,7 +351,7 @@
                         pattern="^\d{12}$"
                     />
                     <label for="aadhar">
-                        <i class="far fa-id-card"></i> Aadhaar No
+                        <i class="far fa-id-card" style="font-size: 12px;"></i> Aadhaar No
                     </label>
 
                     <!-- Display error messages -->
@@ -374,7 +388,7 @@
                       pattern="^[A-Z]{5}\d{4}[A-Z]$"
                   />
                   <label for="pancard">
-                      <i class="far fa-id-card"></i> PAN Card No
+                      <i class="far fa-id-card" style="font-size: 12px;"></i> PAN Card No
                   </label>
 
                   <!-- Display error messages -->
@@ -401,7 +415,7 @@
                         pattern="^[A-Z0-9]{6,9}$"
                     />
                     <label for="passport">
-                        <i class="fas fa-book"></i> Passport No
+                        <i class="fas fa-book" style="font-size: 12px;"></i> Passport No
                     </label>
 
                     <!-- Display error messages -->
@@ -430,7 +444,7 @@
                       maxlength="20"
                   />
                   <label for="current_address1">
-                      <i class="fas fa-map-marker-alt"></i> Address 1
+                      <i class="fas fa-map-marker-alt" style="font-size: 12px;"></i> Address 1
                   </label>
 
                   <!-- Display error messages -->
@@ -459,7 +473,7 @@
                         maxlength="20"
                     />
                     <label for="current_address2">
-                        <i class="fas fa-map-marker-alt"></i> Address 2
+                        <i class="fas fa-map-marker-alt" style="font-size: 12px;"></i> Address 2
                     </label>
 
                     <!-- Display error messages -->
@@ -477,21 +491,21 @@
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_city" id="current_city" required [(ngModel)]="newItem.C_city">
-                  <label for="name"><i class="fas fa-city"></i>
+                  <label for="name"><i class="fas fa-city" style="font-size: 12px;"></i>
                     City</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_state" id="current_state" required [(ngModel)]="newItem.C_state">
-                  <label for="name"><i class="fas fa-map-marked-alt"></i>
+                  <label for="name"><i class="fas fa-map-marked-alt" style="font-size: 12px;"></i>
                     State</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_pincode" id="current_pincode" required [(ngModel)]="newItem.C_pincode">
-                  <label for="name"><i class="fas fa-thumbtack"></i>
+                  <label for="name"><i class="fas fa-thumbtack" style="font-size: 12px;"></i>
                     PinCode</label>
                 </div>
               </td>
@@ -501,14 +515,14 @@
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_address1" id="current_address1" required [(ngModel)]="newItem.P_address1">
-                  <label for="name"><i class="fas fa-map-marker-alt"></i>
+                  <label for="name"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i>
                     Address 1</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_address2" id="current_address2" required [(ngModel)]="newItem.P_address2">
-                  <label for="name"><i class="fas fa-map-marker-alt"></i>
+                  <label for="name"><i class="fas fa-map-marker-alt" style="font-size: 12px;"></i>
                     Address 2</label>
                 </div>
               </td>
@@ -517,21 +531,21 @@
               <td>
                 <div class="inputGroup">
                   <input type="text" name="current_city" id="current_city" required [(ngModel)]="newItem.P_city">
-                  <label for="name"><i class="fas fa-city"></i>
+                  <label for="name"><i class="fas fa-city" style="font-size: 12px;"></i>
                     City</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="permenent_state" id="current_state" required [(ngModel)]="newItem.P_state">
-                  <label for="name"><i class="fas fa-map-marked-alt"></i>
+                  <label for="name"><i class="fas fa-map-marked-alt" style="font-size: 12px;"></i>
                     State</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="permenent_pincode" id="current_pincode" required [(ngModel)]="newItem.P_pincode">
-                  <label for="name"><i class="fas fa-thumbtack"></i>
+                  <label for="name"><i class="fas fa-thumbtack" style="font-size: 12px;"></i>
                     PinCode</label>
                 </div>
               </td>
@@ -540,20 +554,19 @@
               <td>
                 <div class="inputGroup">
                   <input type="text" name="e_name" id="e_name" required [(ngModel)]="newItem.E_Name">
-                  <label for="name" style="font-size: 13px;"><i style="font-size: 10px;" class="fas fa-user"></i>Emergency Contact Name</label>
+                  <label for="name" style="font-size: 12px;"><i style="font-size: 10px;" class="fas fa-user"></i>Emergency Contact Name</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="e_relationship" id="e_relationship" required [(ngModel)]="newItem.E_Relationship">
-                  <label for="name" style="font-size: 13px;"><i style="font-size: 10px;" class="fas fa-male"></i>
-                    Emergency Relationship</label>
+                  <label for="name" style="font-size: 13px;"><i style="font-size: 10px;" class="fas fa-male"></i>Emergency Relationship</label>
                 </div>
               </td>
               <td>
                 <div class="inputGroup">
                   <input type="text" name="e_phone" id="e_phone" required [(ngModel)]="newItem.E_Phone">
-                  <label for="name"><i class="fas fa-mobile-alt"></i> Emergency Phone</label>
+                  <label for="name"><i class="fas fa-mobile-alt" style="font-size: 12px;"></i> Emergency Phone</label>
                 </div>
               </td>
             </tr>
