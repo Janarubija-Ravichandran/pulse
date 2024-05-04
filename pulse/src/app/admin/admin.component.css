@@ -10,12 +10,12 @@
   padding: 10px;
   /* padding-left: 100px; */
   height: 120px;
-  width: 900px;
+  width: 100%;
 }
 
 /* Container styling */
 .container {
-  width: 80%;
+  width: 100%;
   margin: 20px;
   border: 1px solid white;
   padding: 20px;
@@ -87,12 +87,12 @@ table th {
  border-radius: 10px 0 0 10px;
 } */
 table {
-  width: 100%;
+  /* width: 100%; */
   /* Use the full width of the container */
   border-collapse: collapse;
   background-color: #d9e7ed;
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 table th,
@@ -242,3 +242,7 @@ input[type="button"].dowbut:hover {
     /* Move up */
   }
 }
+/*
+.head{
+  overflow-x: auto;
+} */

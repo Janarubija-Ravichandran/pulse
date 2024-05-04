@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
@@ -32,10 +32,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: '192.168.0.147',
   user: 'root',
-  password: 'Pozent@123',
-  database: 'pulse'
+  password: 'root',
+  database: 'pulsedb'
 });
 
 db.connect((err) => {
@@ -85,7 +85,7 @@ app.post('/api/emp_info/add', upload.single('profile_image'), (req, res) => {
     E_Phone
   } = req.body;
 
-  const imageUrl = req.file ? `http://localhost:${PORT}/uploads/${req.file.filename}` : null;
+  const imageUrl = req.file ? `http://192.168.0.147:${PORT}/uploads/${req.file.filename}` : null;
 
   const sql = `
     INSERT INTO emp_info (
@@ -823,5 +823,5 @@ app.put('/api/experience/:Aadhar', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://192.168.0.147:${PORT}`);
 });

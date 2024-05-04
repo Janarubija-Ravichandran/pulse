@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AadharService } from '../aadhar.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { NgModule } from '@angular/core';
 
@@ -14,7 +15,7 @@ interface Item{
     First_Name: '',
     Middle_Name: '',
     Last_Name: '',
-    Age: '',
+    Age: string,
     DOB: '',
     Gender: '',
     Marital_Status: '',
@@ -40,7 +41,8 @@ interface Item{
     P_address2: '',
     P_city: '',
     P_state: '',
-    P_pincode: ''
+    P_pincode: '',
+    name:''
 }
 
 @Component({
@@ -55,7 +57,7 @@ export class ProfileComponent implements OnInit {
     First_Name: '',
     Middle_Name: '',
     Last_Name: '',
-    Age: '',
+    Age: "",
     DOB: '',
     Gender: '',
     Marital_Status: '',
@@ -81,7 +83,8 @@ export class ProfileComponent implements OnInit {
     P_address2: '',
     P_city: '',
     P_state: '',
-    P_pincode: ''
+    P_pincode: '',
+    name:'',
   };
   selectedFile: File | null = null;
   imageUrl: string = 'path/to/default-image.jpg';
@@ -97,28 +100,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
   onSubmit(): void {
-    // if (!this.selectedFile) {
-    //   console.error('No file selected');
-    //   return;
-    // }
-    const isFormValid = this.userForm.valid;
-    debugger;
-    this.isFormSubmitted =  true;
 
-//     this.form = this.fb.group({
-//       name: ['', Validators.required],
-//   });
-//   if (this.form.valid) {
-//     console.log('Form Submitted!', this.form.value);
-// }
 
-    // Creating a FormData object to submit data
     const formData = new FormData();
-    // formData.append('profile_image', this.selectedFile);
-
-    // Appending other form fields to FormData
     formData.append('Emp_Name', `${this.newItem.First_Name} ${this.newItem.Middle_Name} ${this.newItem.Last_Name}`.trim());
     formData.append('Age', this.newItem.Age.toString());
     formData.append('DOB', this.newItem.DOB);
@@ -126,8 +111,8 @@ export class ProfileComponent implements OnInit {
     formData.append('Marital_Status', this.newItem.Marital_Status);
     formData.append('Blood_Group', this.newItem.Blood_Group);
     formData.append('Nationality', this.newItem.Nationality);
-    formData.append('Current_Location', `${this.newItem.C_address1}, ${this.newItem.C_address2}, ${this.newItem.C_city}, ${this.newItem.C_state}, ${this.newItem.C_pincode}`.trim());
-    formData.append('Permanent_Location', `${this.newItem.P_address1}, ${this.newItem.P_address2}, ${this.newItem.P_city}, ${this.newItem.P_state}, ${this.newItem.P_pincode}`.trim());
+    formData.append('Current_Location', this.newItem.Current_Location);
+    formData.append('Permanent_Location', this.newItem.Permanent_Location);
     formData.append('Phone', this.newItem.Phone);
     formData.append('Email', this.newItem.Email);
     formData.append('Language_Known', this.newItem.Language_Known);
@@ -148,11 +133,45 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/education']);
       },
       error: (error) => {
-        console.error('Error adding item:', error);
-        alert('fill all the details')
+        console.log('Error adding item:', error);
+        // Handle error case
       }
     });
   }
+  // // Sending form data to server
+  //   this.http.post<any>('http://localhost:8090/api/emp_info/add', formData).subscribe({
+  //     next: (response) => {
+  //       console.log('Item added:', response);
+  //       this.aadharService.changeAadhar(this.newItem.Aadhar);
+
+  //       // Navigate to a different page upon successful submission
+  //       this.router.navigate(['/education']);
+  //     },
+  //     error: (error) => {
+  //       console.error('Error adding item:', error);
+  //       // alert('fill all the details')
+  //     }
+  //   });
+  // }
+
+  calculateAge(dob: string): void {
+    if (dob) {
+        const today = new Date();
+        const birthDate = new Date(dob);
+        let age = today.getFullYear() - birthDate.getFullYear();
+
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        this.newItem.Age = age.toString(); // Convert age to string
+    } else {
+        this.newItem.Age = ""; // Reset age to an empty string if DOB is not provided
+    }
+}
+
+
 
   // Handle file selection
   onFileSelected(event: any): void {
@@ -165,7 +184,7 @@ export class ProfileComponent implements OnInit {
 
     if (!this.selectedFile.type.startsWith('image/')) {
       console.error('Selected file is not an image.');
-      alert('Please select a valid image file.');
+      // alert('Please select a valid image file.');
       this.selectedFile = null;
       return;
     }

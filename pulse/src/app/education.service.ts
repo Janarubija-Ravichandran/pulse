@@ -9,7 +9,7 @@ import { Item } from './user/user.component';
   providedIn: 'root'
 })
 export class EducationService {
-  private apiUrl = 'http://localhost:8088/education'; // Adjust URL to your backend endpoint
+  private apiUrl = 'http://192.168.0.147:8090/education'; // Adjust URL to your backend endpoint
 
   constructor(private http: HttpClient) { }
 

@@ -1,10 +1,10 @@
-/* *{
-  padding:7px 7px 5px 0;
+*{
+  padding:7px 10px 7px 0;
   margin: auto;
-} */
+}
  .main {
    padding-top: -30px;
-   padding-left: 104px;
+   padding-left: 80px;
 
 
 background-color: ivory;
@@ -15,7 +15,9 @@ background-color: ivory;
    background-origin: padding-box;
    border-radius: 7px;
  }
-
+table tr{
+  padding: 20px;
+}
 
  .small-icon {
    font-size: 12px;
@@ -81,8 +83,6 @@ background-color: ivory;
    border-radius: 4px;
    cursor: pointer;
  }
-
- /* Style for the image container */
  .image-container {
    position: relative;
    background-color:transparent;
@@ -144,8 +144,52 @@ left:-10px;
    top: -10px;
    left: 740px;
  }
-
  .inputGroup {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: auto;
+  max-width: 230px;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.4em;
+  outline: none;
+  border: 2px solid rgb(23, 0, 124);
+  background-color: transparent;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.inputGroup label {
+  font-size: 80%;
+  position: absolute;
+  left: 0;
+  padding: 0.5em;
+  margin-left: 1.1em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+}
+
+.inputGroup input:focus ~ label,
+.inputGroup input:not(:placeholder-shown) ~ label {
+  transform: translateX(-10%) scale(1.0);
+  margin: -1.2em;
+  margin-left: 2.2em;
+  padding: 0.4em;
+  background-color: #f0f4f5e8;
+  height: 8px;
+  /* width:150px; */
+
+}
+
+.inputGroup input:focus,
+.inputGroup input:not(:placeholder-shown) {
+  border-color: rgb(57, 57, 155);
+}
+
+ /* .inputGroup {
    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    margin: auto;
    max-width: 230px;
@@ -173,7 +217,7 @@ left:-10px;
    color: rgb(100, 100, 100);
  }
 
- .inputGroup :is(input:focus, input:valid)~label {
+ .inputGroup :is(input:focus, input:user-invalid)~label {
    transform: translateX(-10%) scale(1.0);
    margin: -1.2em;
    margin-left: 2.2em;
@@ -181,12 +225,9 @@ left:-10px;
    background-color: #f0f4f5e8;
    height: 10px;
  }
-
- .inputGroup :is(input:focus, input:valid) {
+ .inputGroup :is(input:focus, input:active) {
    border-color: rgb(150, 150, 200);
- }
-
- /* Button styling */
+ } */
  .save-button {
    display: flex;
    align-items: center;
@@ -199,51 +240,35 @@ left:-10px;
    cursor: pointer;
    font-size: 14px;
    position: relative;
-   left: 660px;
-   /* Position relative for the animation */
+   left: 710px;
    overflow: hidden;
-   /* Hide the overflowing animation */
  }
-
- /* Icon styling */
  .save-button i {
    margin-right: 5px;
-   /* Adjust as needed for spacing between icon and text */
  }
-
- /* Animation */
  .save-button::after {
    content: '';
-   /* Empty content */
    position: absolute;
    width: 0;
    height: 100%;
    top: 0;
    left: 50%;
    background-color: rgba(255, 255, 255, 0.2);
-   /* Transparent white color for the animation */
    transition: width 0.3s ease-out;
-   /* Animation transition */
  }
-
- /* Hover animation */
  .save-button:hover::after {
    width: 100%;
-   /* Expand the width on hover */
    left: 0;
-   /* Move the animation to the left */
  }
  .input-error {
   border: 1px solid red;
 }
-
-/* Style for error message */
 .error-message {
   width: 270px;
   height: 10px;
   color: red;
   position: absolute;
-  left:-60px;
-  top:15px;
-
+  left:-10px;
+  top:35px;
+  font-size: 12px;
 }

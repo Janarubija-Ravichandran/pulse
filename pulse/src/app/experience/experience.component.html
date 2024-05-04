@@ -14,7 +14,7 @@
                         <th>Aadhar Number:</th>
                         <td><input type="text" id="aadhar" name="aadhar" [(ngModel)]="experience.Aadhar" disabled></td>
                         <span style="display: flex;align-items: end;justify-content: end;">
-                          <button type="submit" class="save-button"><i class="fa fa-plus"></i>
+                          <button type="submit" class="save-button">Add
                           </button></span>
                     </tr>
                     <tr>
@@ -47,10 +47,11 @@
                     </tr>
 
                     <tr>
-                      <td> <button type="submit" class="save-button" (click)="edu()" style="align-items: center;"><i
-                            class="fas fa-chevron-left"></i></button>
+                      <td> <button type="submit" class="save-button" (click)="edu()"
+                        style="align-items: center;">Back</button>
                       </td>
-                      <td><button type="submit" class="nexbut" (click)="success()">Save</button></td>
+                      <td><button type="submit" class="save-button" (click)="success()"
+                       style="position: relative;top:-3px;left:260px;" >Save</button></td>
                     </tr>
                 </table>
             </form>
@@ -59,7 +60,7 @@
         <!-- Display minimized form data -->
         <div><br>
           <h3 class="minimized-form">Submitted Experience Details</h3>
-            <table class="table1">
+            <table class="table1"  cellPadding="5" cellSpacing="5">
               <thead class="head">
                 <tr>
                   <th>Company Name</th>
