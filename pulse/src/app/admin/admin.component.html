@@ -1,13 +1,14 @@
 <div class="main">
   <div class="container" style="background-color: ivory;">
-    <div class="sub">
+    <div class="sub" style="margin-top: -15px;">
       <div>
-        <div class="butt" style="padding-left: 400px; position: fixed;">
+        <div class="butt" style="position: absolute; padding-left: 490px;padding-top: -15px;">
 
           <div style="display: flex;">
             <input type="text" [(ngModel)]="Emp_Name" placeholder="Search by Emp Name" >
-            <span>
-                          <button (click)="onSearchChange()"><i class="fa fa-search"></i>
+            
+            <span style="padding-top: 6px;">
+                          <button (click)="onSearchChange()" style="background-color: transparent; padding-top: 5px; cursor: pointer; width: 35px; height: 30px; position: absolute;right: 373px;"><i class="fa fa-search" style="font-size: 14px;color: rgb(0, 153, 255);"></i>
                           </button>
             </span>
           </div>
@@ -24,7 +25,7 @@
                      <i class="fa-solid fa-file-csv"></i><i class="fa-solid fa-download"></i>
                     </button>
                     <button (click)="downloadAllPDF()" style="background-color: red;display: flex;"
-                    [class.blur-effect]="!employee_data.length" class="dowbutpdf"><i
+                   class="dowbutpdf"><i
                         class="fa-regular fa-file-pdf"></i>
                       <i class="fa-solid fa-download"></i></button>
 
@@ -34,7 +35,7 @@
         </div>
         <div class="content" style="padding-top: 100px;">
         <form enctype="multipart/form-data">
-          <div class="overall" style="max-height: 700px; overflow-y: auto; max-width: 1200px; overflow-x: auto;">
+          <div class="overall" style="max-height: 700px; overflow-y: auto; max-width: 1200px; overflow-x: auto; margin-top: -29px;">
           <table rules="all" class="fixed-header">
             <thead class="head">
               <tr>

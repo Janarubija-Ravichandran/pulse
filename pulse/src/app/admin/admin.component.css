@@ -7,7 +7,7 @@
 
 /* Main container styling */
 .main {
-  padding: 10px;
+  padding-top: -9px;
   /* padding-left: 100px; */
   height: 120px;
   width: 100%;
@@ -158,10 +158,9 @@ input[type="button"].dowbut:hover {
 .butt {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* Adjust the space between elements */
-  gap: 10px;
-  /* Add gap between items */
+  justify-content: flex-start;
+  gap: 2px;
+  margin-bottom: 20px;
 }
 
 /* Styling for the search input and button */
